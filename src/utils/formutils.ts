@@ -65,13 +65,13 @@ export const validateAnswerField = (formItem: TFormItem) => {
   }
 
   if (formItem.questionType === 'select') {
-    if (formItem.isRequired && formItem?.answer?.trim() === '') {
+    if (formItem?.answer?.trim() === '') {
       return 'Answer is required';
     }
   }
 
   if (formItem.questionType === 'text') {
-    if (formItem.isRequired && formItem?.answer?.trim() === '') {
+    if (formItem?.answer?.trim() === '') {
       return 'Answer is required';
     }
   }
