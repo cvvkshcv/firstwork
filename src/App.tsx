@@ -1,33 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from 'react';
+import { useForm } from './store/useForm'
+import FormBuilder from './components/builder/FormBuilder';
+import FormRenderer from './components/renderer/FormRenderer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const { addItem, preFillItems, changeMode, mode } = useForm();
+
+
+  const handleMode = () => {
+    if (mode === 'view') {
+      changeMode('edit');
+    } else {
+      changeMode('view');
+    }
+  }
+
+  useEffect(() => {
+    try {
+      const formItem = localStorage.getItem('formItems');
+      if (formItem) {
+        const prefillValue = JSON.parse(formItem);
+        preFillItems(Object.values(prefillValue));
+      }
+    } catch (error) {
+      console.log("🚀 ~ useEffect ~ error in localStorage:", error)
+    }
+  }, [preFillItems]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button className='bg-amber-200 px-3 py-1 cursor-pointer mr-2 disabled:opacity-50 disabled:cursor-not-allowed' onClick={addItem} disabled={mode === 'view'}>Add Item</button>
+      <button className='bg-amber-200 px-3 py-1 cursor-pointer mr-2' onClick={handleMode}>Toggle mode</button>
+
+      <h3>Current mode: {mode}</h3>
+      <hr className='my-5' />
+      {
+        mode === 'view' ? <FormRenderer /> : <FormBuilder />
+      }
     </>
   )
 }
