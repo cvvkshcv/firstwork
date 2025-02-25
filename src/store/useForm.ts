@@ -137,6 +137,7 @@ export const useForm = create<FormState & FormAction>()(
             if (i % 5 === 0) {
               return reject('Failed to save');
             }
+            delete item.errors;
             const localFormItem = localStorage.getItem('formItems') || '{}';
             const formItems = JSON.parse(localFormItem);
             formItems[item.id] = item;
