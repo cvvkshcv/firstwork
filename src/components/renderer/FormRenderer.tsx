@@ -14,6 +14,7 @@ const FormRenderer = () => {
     const isValid = validateAnswer();
     if (isValid) {
       // Save form
+      alert('Submitting....');
     }
   };
 

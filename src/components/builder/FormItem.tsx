@@ -12,7 +12,6 @@ const FormItem = (props: FormItemProp) => {
     isHidden,
     helperText,
     errors,
-    isSaving,
   } = formItem;
   const { saveProgress, updateFormItem, deleteFormItem, updateOptionsField } = useForm();
 

@@ -34,7 +34,7 @@ export type FormAction = {
   saveFormula: (item: TFormItem) => Promise<void>;
   deleteFormula: (id: string) => void;
   changeMode: (mode: 'view' | 'edit') => void;
-  validateAnswer: () => void;
+  validateAnswer: () => boolean;
 }
 
 export type FormItemProp = {
