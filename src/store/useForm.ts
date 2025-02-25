@@ -168,7 +168,7 @@ export const useForm = create<FormState & FormAction>()(
 
       validateAnswer: () => {
         let hasError = false;
-        const validatedFields = get().formItems.map(formItem => {
+        const validatedFields = get().formItems.filter(item => !item.isHidden).map(formItem => {
           const error = validateAnswerField(formItem);
           if (error) {
             hasError = true;

@@ -54,6 +54,7 @@ export const validateAnswerField = (formItem: TFormItem) => {
   if (!formItem.isRequired) {
     return null;
   }
+  if (!formItem?.answer) return 'Answer is required';
   if (formItem.questionType === 'number') {
     if (formItem.isRequired && (formItem?.answer?.trim() === '' || isNaN(Number(formItem.answer)))) {
       return 'Answer is required and should be a number';
