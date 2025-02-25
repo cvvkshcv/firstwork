@@ -17,7 +17,7 @@ const RenderNumericField = (props: FormItemProp) => {
 
   return (
     <div className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm m-5">
-      <p className="block"><b>Question: </b> {questionTitle}</p>
+      <p className="block"><b>Question: </b> {questionTitle} <b className='text-red-400'>{formItem.isRequired ? '*' : ''}</b></p>
       <input value={formItem?.answer} type="number" onChange={(e) => handleUpdateAnswer(e.target.value)} min={min} max={max} placeholder={helperText} className="w-full border border-gray-300 p-2.5 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
       {formItem?.errors?.answer && <small className="block text-red-500">{formItem?.errors?.answer}</small>}
     </div>

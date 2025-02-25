@@ -35,9 +35,11 @@ function App() {
 
       <h3>Current mode: {mode}</h3>
       <hr className='my-5' />
-      {
-        mode === 'view' ? <FormRenderer /> : <FormBuilder />
-      }
+      <div className='w-[60%] mx-auto'>
+        {
+          mode === 'view' ? <FormRenderer /> : <FormBuilder />
+        }
+      </div>
     </>
   )
 }

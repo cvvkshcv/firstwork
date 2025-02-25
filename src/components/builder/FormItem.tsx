@@ -4,7 +4,7 @@ import { getOptionObject } from '../../utils/formutils';
 
 
 const FormItem = (props: FormItemProp) => {
-  const { formItem, } = props;
+  const { formItem, index = 0 } = props;
   const {
     questionTitle,
     questionType,
@@ -173,7 +173,9 @@ const FormItem = (props: FormItemProp) => {
         {saveProgress?.[formItem?.id] && <p className='text-green-500'>{saveProgress[formItem.id]}</p>} */}
         <div className='flex w-full relative'>
           <div className='flex-1'>
-            <label htmlFor="question_name" className="block mb-2 text-sm font-medium text-gray-900">Question</label>
+            <label htmlFor="question_name" className="block mb-2 text-sm font-medium text-gray-900">
+              <b>{index + 1})</b> Question:
+            </label>
             <input
               type="text"
               value={questionTitle}

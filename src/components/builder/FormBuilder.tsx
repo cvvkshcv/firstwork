@@ -6,8 +6,8 @@ const FormBuilder = () => {
   return (
     <ul>
       {
-        formItems.map(formItem => {
-          return <FormItem key={formItem.id} formItem={formItem} />
+        formItems.map((formItem, i) => {
+          return <FormItem key={formItem.id} index={i} formItem={formItem} />
         })
       }
     </ul>

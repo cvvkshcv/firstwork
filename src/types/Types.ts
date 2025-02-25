@@ -39,6 +39,7 @@ export type FormAction = {
 
 export type FormItemProp = {
   formItem: TFormItem;
+  index?: number;
 }
 export type FormRendererProp = {
   formItems: TFormItem[];
