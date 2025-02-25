@@ -35,7 +35,7 @@ function App() {
 
       <h3>Current mode: {mode}</h3>
       <hr className='my-5' />
-      <div className='w-[60%] mx-auto'>
+      <div className='sm:w-[60%] w-full mx-auto'>
         {
           mode === 'view' ? <FormRenderer /> : <FormBuilder />
         }
