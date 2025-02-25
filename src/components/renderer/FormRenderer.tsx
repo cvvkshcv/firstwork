@@ -11,8 +11,8 @@ const FormRenderer = () => {
   if (validFormItems.length === 0) return <p>No form items to render</p>;
 
   const handleSubmit = () => {
-    const isValid = validateAnswer();
-    if (isValid) {
+    const hasError = validateAnswer();
+    if (!hasError) {
       // Save form
       alert('Submitting....');
     }

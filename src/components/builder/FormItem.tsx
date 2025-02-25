@@ -19,7 +19,7 @@ const FormItem = (props: FormItemProp) => {
     deleteFormItem(formItem.id);
   };
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, fieldName: keyof TFormItem) => {
+  const handleFieldValueChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, fieldName: keyof TFormItem) => {
     let value;
     if (['isRequired', 'isHidden'].includes(fieldName)) {
       value = (e.target as HTMLInputElement).checked; // Checked is a boolean
@@ -178,7 +178,7 @@ const FormItem = (props: FormItemProp) => {
               type="text"
               value={questionTitle}
               id="question_name"
-              onChange={(e) => handleNameChange(e, 'questionTitle')}
+              onChange={(e) => handleFieldValueChange(e, 'questionTitle')}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             />
             {errors?.questionTitle !== undefined && <p className='text-red-500'>{errors.questionTitle}</p>}
@@ -194,7 +194,7 @@ const FormItem = (props: FormItemProp) => {
         <div className='flex gap-5 mt-3 items-center'>
           <div className='flex-1'>
             <label htmlFor="question_title" className="block mb-2 text-sm font-medium text-gray-900">Type</label>
-            <select onChange={(e) => handleNameChange(e, 'questionType')} value={questionType} id="question_title" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <select onChange={(e) => handleFieldValueChange(e, 'questionType')} value={questionType} id="question_title" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               <option value="">Select an option</option>
               <option value="text">Text</option>
               <option value="number">Number</option>
@@ -205,11 +205,11 @@ const FormItem = (props: FormItemProp) => {
 
           <div className='flex mt-3 items-center'>
             <label htmlFor="isRequired" className="block mb-2 text-sm font-medium text-gray-900">
-              <input id="isRequired" type='checkbox' onChange={(e) => handleNameChange(e, 'isRequired')} checked={isRequired} /> Required
+              <input id="isRequired" type='checkbox' onChange={(e) => handleFieldValueChange(e, 'isRequired')} checked={isRequired} /> Required
             </label>
             
             <label htmlFor="isHidden" className="block mb-2 text-sm font-medium text-gray-900">
-              <input id="isHidden" type='checkbox' onChange={(e) => handleNameChange(e, 'isHidden')} checked={isHidden} /> Hidden
+              <input id="isHidden" type='checkbox' onChange={(e) => handleFieldValueChange(e, 'isHidden')} checked={isHidden} /> Hidden
             </label>
           </div>
         </div>
@@ -220,7 +220,7 @@ const FormItem = (props: FormItemProp) => {
             type="text"
             value={helperText}
             id="helperText"
-            onChange={(e) => handleNameChange(e, 'helperText')}
+            onChange={(e) => handleFieldValueChange(e, 'helperText')}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           />
         </div>
